@@ -9,33 +9,29 @@ filterwarnings('ignore')
 
 def streamlit_config():
 
-    # page configuration
     st.set_page_config(page_title='Classification', layout='centered')
 
-    # page header transparent color
     page_background_color = """
     <style>
 
     [data-testid="stHeader"] 
-    {
-    background: rgba(0,0,0,0);
+    {st
+    background: rgba(7, 75, 5, 0);
     }
 
     </style>
     """
     st.markdown(page_background_color, unsafe_allow_html=True)
 
-    # title and position
     st.markdown(f'<h1 style="text-align: center;">Potato Disease Classification</h1>',
                 unsafe_allow_html=True)
     add_vertical_space(4)
 
 
-# Streamlit Configuration Setup
 streamlit_config()
 
 
-def prediction(image_path, class_names=['Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']):
+def prediction(image_path, class_names=['Potato_Early_blight', 'Potato_Late_blight', 'Potato_healthy']):
 
     img = Image.open(image_path)
     img_resized = img.resize((256,256))
@@ -46,7 +42,7 @@ def prediction(image_path, class_names=['Potato___Early_blight', 'Potato___Late_
     prediction = model.predict(img_array)
 
     predicted_class = class_names[np.argmax(prediction)]
-    confidence = round(np.max(prediction)*100, 2)
+    confidence = round(np.max(prediction)*100,2)
 
     add_vertical_space(1)
     st.markdown(f'<h4 style="color: orange;">Predicted Class : {predicted_class}<br>Confident : {confidence}%</h3>', 
