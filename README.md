@@ -117,10 +117,7 @@ The CNN model consists of the following layers:
 ## **Results**  
 - **Training Accuracy**: ~98%  
 - **Validation Accuracy**: ~95%  
-- **Test Accuracy**: ~94%  
-
-### **Training vs Validation Curves**  
-![Training vs Validation Curves](training_validation_curves.png)  
+- **Test Accuracy**: ~94%   
 
 ---
 
@@ -136,7 +133,13 @@ Contributions are welcome! If you'd like to improve this project, please follow 
 ---
 
 ## **License**  
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.  
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE.txt) file for details.  
+
+---
+---
+
+## **requirements**  
+This project is requirement some python lib . See the [requirements](requirements.txt) file for details.  
 
 ---
 
