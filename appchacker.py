@@ -23,13 +23,21 @@ def is_potato_leaf(img):
     return prediction > 0.4  
 
 def predict_disease(img):
+    # 🟢 تأكد إن الصورة بصيغة RGB
+    img = img.convert("RGB")
+    
+    # 🟢 نفس المعالجة القديمة
     img_resized = img.resize((256, 256))
-    img_array = tf.keras.preprocessing.image.img_to_array(img_resized) / 255.0
+    img_array = tf.keras.preprocessing.image.img_to_array(img_resized)
     img_array = np.expand_dims(img_array, axis=0)
+
+    # ❌ بلاش تقسم على 255 لو النموذج متدرب بدون normalization
     prediction = disease_model.predict(img_array)
+
     predicted_class = disease_classes[np.argmax(prediction)]
     confidence = round(np.max(prediction) * 100, 2)
     return predicted_class, confidence
+
 
 uploaded_file = st.file_uploader("📤 Upload a leaf image", type=["jpg", "jpeg", "png"])
 
